@@ -1,3 +1,4 @@
+import Inf from './inf.js'
 class Win {
   checkWin(){
     if (this.diagWin()||this.horizWin()||this.vertWin())
@@ -8,14 +9,14 @@ class Win {
     diagWin(){
     let flg1=1;
     let flg2=1;
-    if (value[1][1]==-1)
+    if (Inf.value[1][1]==-1)
         return false
     for (let i=1; i<3; i++){
         
-        if (value[i][i]!=value[i-1][i-1])
+        if (Inf.value[i][i]!=Inf.value[i-1][i-1])
             flg1=0;
         
-        if (value[i][2-i]!=value[i-1][3-i])
+        if (Inf.value[i][2-i]!=Inf.value[i-1][3-i])
             flg2=0;
     }
     if ((flg1==1)||(flg2==1))
@@ -27,9 +28,9 @@ class Win {
     vertWin(){
     // проверка по вертикали
     for (let j=0; j<3; j++){
-        if (value[0][j]!=-1){
+        if (Inf.value[0][j]!=-1){
             for (let i=1; i<3; i++){
-                if (value[i-1][j]!=value[i][j]){
+                if (Inf.value[i-1][j]!=Inf.value[i][j]){
                 break;
                 }
                 console.log("index"+i+j)
@@ -46,9 +47,9 @@ class Win {
     horizWin(){
     // проверка по горизонтали
     for (let i=0; i<3; i++){
-        if (value[i][0]!=-1){
+        if (Inf.value[i][0]!=-1){
             for (let j=1; j<3; j++){
-                if (value[i][j-1]!=value[i][j]){
+                if (Inf.value[i][j-1]!=Inf.value[i][j]){
                     break;
                 }
                 console.log("index"+i+j)
