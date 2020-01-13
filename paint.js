@@ -27,7 +27,7 @@ export function paint(i,j){
                  return;
              }
          }
-         if (count==9){
+         if (Inf.count==9){
          alert ("NOBODY WIN OR EVERYONE WIN. FIGHT");
          clean();
          return;
