@@ -1,7 +1,6 @@
 import {paint} from './paint.js'
 class S{
   start(){
-    alert("DD")
     document.querySelector('table').onclick = (event) => {
     let cell = event.target;
     if (cell.tagName.toLowerCase() != 'td')
