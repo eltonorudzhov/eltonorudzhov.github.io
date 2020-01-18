@@ -1,6 +1,4 @@
-import Sortfunc from './src/js/sortfunc.js'
-import CreateRoot from './src/js/createroot.js'
-let list = [
+export default list1 = [
     {
         name: "Вова",
         secondname: "Клева",
@@ -128,24 +126,3 @@ let list = [
         age: 5
     },
 ]
-let list2 = [
-    {
-        name: "Аня",
-        secondname: "Сельдереева",
-        age: 73
-    },
-    {
-        name: "Ксюша",
-        secondname: "Кактусова",
-        age: 45
-    },
-    {
-        name: "Наташа",
-        secondname: "Пеналова",
-        age: 22
-    }
-]
-let root = new CreateRoot('mainBodyList')
-let myUser = new Sortfunc(list, root )
-let myUser2 = new Sortfunc(list2, root )
-//myUser.findProperty()
