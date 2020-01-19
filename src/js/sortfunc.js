@@ -11,6 +11,9 @@ export default class Sortfunc {
     this.keyName = findProperty(this.numberElement);
     this.list = [];
     // создаем и сортируем список
+    
+    this.listBody =  document.getElementById('bodyList'+this.numberElement)
+    this.listBody.innerHTML=''
     this.setList(props);
     // обработчик выбора способа сортировки
     form.addEventListener(
@@ -21,6 +24,75 @@ export default class Sortfunc {
       },
       false
     );
+  /*  this.listBody.addEventListener('click', ()=> {
+      this.listBody.children.scrollTop = 10;
+})*/
+
+let isDown=false
+let startY;
+let scrollTop;
+console.log(this.listBody.children[0])
+this.listBody.children[0].addEventListener('mousedown', (e) => {
+  isDown = true;
+  startY = e.pageY - this.listBody.children[0].offsetTop;
+  scrollTop = this.listBody.children[0].scrollTop
+});
+this.listBody.children[0].addEventListener('mouseenter', () => {
+  isDown = false;
+});
+this.listBody.children[0].addEventListener('mouseup', () => {
+  isDown = false;
+});
+this.listBody.children[0].addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const y = e.pageY - this.listBody.children[0].offsetTop;
+  const walk = (y - startY);
+  this.listBody.children[0].scrollTop =  scrollTop-walk;
+  console.log(this.listBody.children[0].scrollTop )
+});
+  /*
+    this.listBody.onmousedown = (event)=> {
+
+     // let shiftX = event.clientX - this.listBody.getBoundingClientRect().left;
+      let shiftY = event.clientY - this.listBody.getBoundingClientRect().top;
+      
+      this.listBody.style.position = 'absolute';
+      this.listBody.style.zIndex = 1000;
+      document.body.append(this.listBody);
+    
+     // moveAt(event.pageY, this.listBody).bind(this);
+     this.listBody.style.top = event.pageY - shiftY + 'px';
+      // переносит мяч на координаты (pageX, pageY),
+      // дополнительно учитывая изначальный сдвиг относительно указателя мыши
+      function moveAt( pageY,listBody) {
+        console.log("SSS")
+       // this.listBody.style.left = pageX - shiftX + 'px';
+        listBody.style.top = pageY - shiftY + 'px';
+      }
+      
+      function onMouseMove(event) {
+       // moveAt( event.pageY).bind(this);
+       this.listBody.style.top = event.pageY - shiftY + 'px';
+      }
+    
+      // передвигаем мяч при событии mousemove
+      document.addEventListener('mousemove', onMouseMove.bind(this));
+    
+      // отпустить мяч, удалить ненужные обработчики
+      this.listBody.onmouseup =()=> {
+        document.removeEventListener('mousemove', onMouseMove.bind(this));
+        this.listBody.onmouseup = null;
+        
+        return;
+      };
+    
+    };
+    
+    this.listBody.ondragstart = ()=> {
+      return false;
+    };
+*/   
   }
   // Выбор способа сортировки
   sortSelect = (form) => {
@@ -34,7 +106,7 @@ export default class Sortfunc {
   setList(list) {
     this.list = list.sort(this.compareList);
     let mapList = makeObject(this.list, this.keyName);
-    drowList(mapList,this.keyName, this.numberElement)
+    this.listBody=drowList(mapList,this.keyName, this.numberElement)
   }
   
   compareList = (a, b) => {
@@ -42,4 +114,8 @@ export default class Sortfunc {
     if (a[this.keyName] == b[this.keyName]) return 0;
     if (a[this.keyName] < b[this.keyName]) return -1;
   };
+
+
+
 }
+

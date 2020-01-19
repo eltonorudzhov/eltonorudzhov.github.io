@@ -3,12 +3,14 @@ export default function drowList(list,keyName, numberElement) {
   // Очистка поля
   let listBody = document.getElementById('bodyList'+numberElement)
   listBody.innerHTML = "";
+  let ulBody = document.createElement("ul");
+  listBody.append(ulBody);
   for (let elem of list.keys()) {
     // Вывод ключа
     let liKey = document.createElement("li");
     let keyStr = "<strong>" + elem + "</strong>"
     liKey.innerHTML = keyStr;
-    listBody.append(liKey);
+    ulBody.append(liKey);
     liKey.classList.add("sticky");
     // Вывод значений по ключу
     list.get(elem).forEach(element => {
@@ -20,7 +22,8 @@ export default function drowList(list,keyName, numberElement) {
         str += " ";
       }
       liElement.innerHTML = str;
-      listBody.append(liElement);
+      ulBody.append(liElement);
     });
   }
+  return listBody
 }
