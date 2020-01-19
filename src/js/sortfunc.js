@@ -27,30 +27,6 @@ export default class Sortfunc {
   /*  this.listBody.addEventListener('click', ()=> {
       this.listBody.children.scrollTop = 10;
 })*/
-
-let isDown=false
-let startY;
-let scrollTop;
-console.log(this.listBody.children[0])
-this.listBody.children[0].addEventListener('mousedown', (e) => {
-  isDown = true;
-  startY = e.pageY - this.listBody.children[0].offsetTop;
-  scrollTop = this.listBody.children[0].scrollTop
-});
-this.listBody.children[0].addEventListener('mouseenter', () => {
-  isDown = false;
-});
-this.listBody.children[0].addEventListener('mouseup', () => {
-  isDown = false;
-});
-this.listBody.children[0].addEventListener('mousemove', (e) => {
-  if(!isDown) return;
-  e.preventDefault();
-  const y = e.pageY - this.listBody.children[0].offsetTop;
-  const walk = (y - startY);
-  this.listBody.children[0].scrollTop =  scrollTop-walk;
-  console.log(this.listBody.children[0].scrollTop )
-});
   /*
     this.listBody.onmousedown = (event)=> {
 
