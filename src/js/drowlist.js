@@ -25,5 +25,9 @@ export default function drowList(list,keyName, numberElement) {
       ulBody.append(liElement);
     });
   }
+  
+  listBody.style.height = 300 + "px";
+  listBody.style.width = 400 + "px";
+  listBody.style.overflowY = "scroll";
   return listBody
 }

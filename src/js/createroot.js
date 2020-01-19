@@ -1,5 +1,6 @@
 export default class CreateRoot{
     constructor(id){
+        // Создается таблица, чтобы несколько списков могли быть упорядочены по столбцам
         this.numberElement = 0;
         let rowElement = document.createElement("row");
         document.getElementById(id).appendChild(rowElement);
@@ -7,24 +8,25 @@ export default class CreateRoot{
         this.trSelect.id = "trSelect"
         this.trDiv = document.createElement('tr')
         this.trDiv.id = "trDiv"
+        // добавляем в один столбец 2 строки - первая отвечающая за выбор  сортировки, вторая за список
         rowElement.appendChild(this.trSelect);
         rowElement.appendChild(this.trDiv);
     }
-
+    // функция, отвечающая за построение разметки для списка и формы
     createRoot(keys){
         let td = document.createElement('td');
         td.id='tdSelect'+this.numberElement
         this.trSelect.appendChild(td)
-        let form = this.createForm()
+        let form = this.createForm(keys)
         td.appendChild(form);
-        this.createInputs(keys,form)
-        this.createButton(form)
         this.createDiv()
         this.numberElement+=1
     }
-    createForm(){
+    createForm(keys){
         let form = document.createElement('form')
         form.id = 'form'+this.numberElement
+        this.createInputs(keys,form)
+        this.createButton(form)
         return form
     }
     createInputs(keys, form){
@@ -47,7 +49,6 @@ export default class CreateRoot{
         let button = document.createElement('button')
         button.type='submit'
         button.innerHTML = "OK"
-        
         form.appendChild(button);
     }
     createDiv(){

@@ -1,21 +1,19 @@
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
 
-   
-  #bodyList{
-      width: 400px;
-    
-  }
-  li {
-      text-indent: 10px;
-      font-size: 20px;
-      margin: 2px;
-    list-style-type: none;
-    border: 1px solid rgb(180, 167, 167); 
-   }
-   .sticky {
-    height: 15px;
-    position: sticky;
-    top: 0px;
-    min-height: 2em;
-    color: white;
-    background:  linear-gradient(to top, rgb(159, 190, 216) , rgb(130, 157, 179));
-  }
+li {
+  text-indent: 10px;
+  font-size: 20px;
+  margin: 1px;
+  list-style-type: none;
+  border: 1px solid rgb(180, 167, 167);
+}
+.sticky {
+  height: 15px;
+  position: sticky;
+  top: 0px;
+  min-height: 2em;
+  color: white;
+  background: linear-gradient(to top, rgb(121, 131, 139), rgb(103, 113, 121));
+}
