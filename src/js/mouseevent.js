@@ -1,4 +1,4 @@
-
+// обработка события мыши
 export default function mouseEvent(listBody) {
   let isDown = false;
   let startY;

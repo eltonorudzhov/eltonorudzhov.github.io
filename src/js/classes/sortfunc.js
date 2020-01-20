@@ -1,11 +1,13 @@
-import drowList from "./drowlist.js"; // рисует
-import makeObject from "./makeobject.js"; // мапит массив
-import findProperty from "./findproperty.js"; // ищет радиобаттон
-import mouseEvent from './mouseevent.js'
-export default class Sortfunc {
+import drowList from "../drowlist.js"; 
+import makeObject from "../makeobject.js"; 
+import findProperty from "../findproperty.js"; 
+import mouseEvent from '../mouseevent.js'
+export default class SortFunc {
   constructor(props, root) {
     this.root = root;
+    // сохраняем номер списка
     this.numberElement = root.numberElement;
+    // выписываем ключи в отдельный массив
     let propsKeys = [];
     for (let keys in props[0]) {
       propsKeys.push(keys);
