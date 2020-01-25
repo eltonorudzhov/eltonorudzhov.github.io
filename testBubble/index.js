@@ -6,7 +6,9 @@ import checkNeeds from './src/js/checkneed.js'
 // объявления
 let inputsValues=generate()
 let speed = (13-inputsValues.speed)*100
-generateButton.onclick=()=> inputsValues = generate();
+generateButton.onclick=()=>{ inputsValues = generate();
+   speed = (13-inputsValues.speed)*100
+}
 startButton.onclick = ()=>  sortBubble()
 
 function sortBubble() {
@@ -19,7 +21,6 @@ function sortBubble() {
    let lastElem = inputsValues.count - 1;
    let period;
    setTimeout(function run() {
-     console.log(speed)
      // задаем период таймера
       period = (lastElem + 2) * speed;
       // запускаем интервал
